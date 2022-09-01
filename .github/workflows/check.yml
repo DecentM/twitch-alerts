@@ -1,0 +1,35 @@
+name: "check"
+
+on:
+  schedule:
+    - cron: 30 * * * *
+
+jobs:
+  run-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get previous workflow status
+        uses: Mercymeilya/last-workflow-status@v0.3.2
+        id: before
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('package.json', 'yarn.lock') }}
+          restore-keys: |
+            node_modules-
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          set -ex
+          yarn --frozen-lockfile --non-interactive
+
+      - name: Run check
+        shell: bash
+        run: |
+          yarn start
