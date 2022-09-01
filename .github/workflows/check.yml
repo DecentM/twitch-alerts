@@ -31,5 +31,25 @@ jobs:
 
       - name: Run check
         shell: bash
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          CHANNEL: ${{ secrets.CHANNEL }}
         run: |
           yarn start
+
+      - name: Discord notification
+        if: "${{ success() && steps.before.outputs.last_status == 'failure' }}"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Live!'
+
+      - name: Discord notification
+        if: "${{ failure() && steps.before.outputs.last_status != 'failure' }}"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Gone offline!'
