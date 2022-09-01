@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:DecentM/twitch-alerts.git",
-  "author": "***REMOVED***",
+  "author": "DecentM <decentm@decentm.com>",
   "license": "MIT",
   "scripts": {
     "dev": "dotenv ts-node-dev index.ts",

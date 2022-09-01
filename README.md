@@ -6,6 +6,11 @@ This repo template sets up a scheduled task that checks if a Twitch channel is
 live or not. If the status has changed since the last check, it sends a Discord
 notification.
 
+The speed of the notification depends on GitHub's global system load. It's
+configured to run every minute, but the quickest GitHub runs tasks is every five
+minutes. If there's a lot of tasks in GitHub's systems at the moment, it may
+take significantly more between checks.
+
 ## Setup
 
 1. Create a repository from this template by clicking the green `Use this template` button
