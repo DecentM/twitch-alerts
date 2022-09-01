@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+    "resolveJsonModule": true,
+
+    "jsx": "preserve",
+    "target": "ES2017",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+
+    "baseUrl": ".",
+
+    "paths": {
+      "@root/*": ["./*"],
+      "@frontend/*": ["./packages/frontend/src/*"],
+      "@backend/*": ["./packages/backend/src/*"],
+    },
+  }
+}
