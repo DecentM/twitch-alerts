@@ -48,7 +48,9 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'Live!'
+          args: |
+            ${{ secrets.CHANNEL }} has gone live on Twitch!
+            https://twitch.tv/${{ secrets.CHANNEL }}
 
       - name: Discord notification
         if: "${{ failure() && steps.before.outputs.last_status != 'failure' }}"
@@ -56,4 +58,5 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'Gone offline!'
+          args: |
+            ${{ secrets.CHANNEL }} is now offline.
