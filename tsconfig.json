@@ -11,12 +11,6 @@
     "module": "CommonJS",
     "moduleResolution": "node",
 
-    "baseUrl": ".",
-
-    "paths": {
-      "@root/*": ["./*"],
-      "@frontend/*": ["./packages/frontend/src/*"],
-      "@backend/*": ["./packages/backend/src/*"],
-    },
+    "baseUrl": "."
   }
 }
